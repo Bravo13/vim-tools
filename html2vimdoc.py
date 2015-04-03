@@ -291,6 +291,7 @@ def decode_hexadecimal_entities(html):
     def decode_entity(match):
         character = chr(int(match.group(1), 16))
         return unsafe_to_decode.get(character, character)
+    html = html.encode("utf8")
     return re.sub(r'&#x([0-9A-Fa-f]+);', decode_entity, html)
 
 def find_root_node(tree, selector):
